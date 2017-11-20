@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "View";
+}
+@using (Html.BeginForm("ImportTemplate", "Admin", FormMethod.Post, new { id = "ImportTemplate", enctype = "multipart/form-data" }))
+{
+    <div>
+        <div class="form-group">
+            @Html.Label("Choose a file", new { @class = "control-label col-md-3" })
+            <div class="col-md-9">
+                <input type="file" name="file" id="fileUpload" />
+            </div>
+        </div>
+        <span class="field-validation-error" id="spanfile"></span>
+        <div id="importLoader" style="display: none; text-align: center">
+            <img src="~/Content/Images/windows-loader.gif" alt="loader" style="display: inline-block" />
+            <h3>This process may take a while...</h3>
+        </div>
+    </div>
+
+    <div>
+        <button type="submit" onclick="return checkfile();" class="btn btn-primary">Import</button>
+    </div>
+}
+
