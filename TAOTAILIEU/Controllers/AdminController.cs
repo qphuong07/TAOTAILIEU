@@ -10,7 +10,6 @@ namespace TAOTAILIEU.Controllers
 {
     public class AdminController : Controller
     {
-        private HttpPostedFileBase xxx;
         private TAOTAILIEUEntities Db { get; } = new TAOTAILIEUEntities();
         [AllowAnonymous]
         public ActionResult Index()
