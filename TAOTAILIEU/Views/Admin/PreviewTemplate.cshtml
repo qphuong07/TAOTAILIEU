@@ -1,0 +1,30 @@
+﻿@model IEnumerable<string>
+
+
+<div id="myCarousel" class="carousel slide" data-interval="false">
+    <ol class="carousel-indicators">
+        @{ var firstText = "active"; }
+        @for (var i = 0; i < Model.Count(); i++)
+        {
+            <li data-target="#myCarousel" data-slide-to="@i" class="@firstText"></li>
+            firstText = "";
+        }
+    </ol>
+    <!-- Carousel items -->
+    <div class="carousel-inner">
+        @{ firstText = "active"; }
+
+        @foreach (var img in Model)
+        {
+
+            <div class="item @firstText">
+                <img id="cvPreviewImage" src="@img" />
+            </div>
+            firstText = "";
+        }
+    </div>
+    <!-- Carousel nav -->
+    <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+    <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+</div>
+

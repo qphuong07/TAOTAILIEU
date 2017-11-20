@@ -44,20 +44,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Amaris.Aspose, Version=1.1.1.18959, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Amaris.Aspose.Word.1.0.4\lib\net461\Amaris.Aspose.dll</HintPath>
+    <Reference Include="Amaris.Aspose, Version=1.1.0.15382, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Amaris.Aspose.Pdf.1.0.3.1\lib\net452\Amaris.Aspose.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Amaris.Aspose.License, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Amaris.Aspose.License.1.0.4\lib\net461\Amaris.Aspose.License.dll</HintPath>
+    <Reference Include="Amaris.Aspose.License, Version=1.0.2.21242, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Amaris.Aspose.License.1.0.2.21242\lib\net452\Amaris.Aspose.License.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Amaris.Aspose.Pdf, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Amaris.Aspose.Pdf.1.0.4\lib\net461\Amaris.Aspose.Pdf.dll</HintPath>
+    <Reference Include="Amaris.Aspose.Pdf, Version=1.0.3.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Amaris.Aspose.Pdf.1.0.3.1\lib\net452\Amaris.Aspose.Pdf.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Amaris.Aspose.Word, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Amaris.Aspose.Word.1.0.4\lib\net461\Amaris.Aspose.Word.dll</HintPath>
+    <Reference Include="Amaris.Aspose.Word, Version=1.0.3.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Amaris.Aspose.Word.1.0.3.1\lib\net452\Amaris.Aspose.Word.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Aspose.Cells, Version=8.5.2.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
@@ -110,7 +110,7 @@
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>..\packages\NLog.4.2.3\lib\net45\NLog.dll</HintPath>
+      <HintPath>..\packages\NLog.4.3.8\lib\net45\NLog.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -257,7 +257,6 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Aspose.Total.lic" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Custom\Admin.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -271,7 +270,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -306,6 +307,8 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\PreviewTemplate.cshtml" />
+    <Content Include="Views\Admin\PreviewDocument.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -318,9 +321,18 @@
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{cf916d2a-fbb3-41c4-bb60-8e3433e6fc63}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
@@ -342,6 +354,9 @@
           <CustomServerUrl>
           </CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+          <servers defaultServer="">
+            <server name="SelfHostServer" exePath="" cmdArgs="" url="http://localhost:56342/" workingDir="" />
+          </servers>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>

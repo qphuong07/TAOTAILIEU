@@ -1,0 +1,9 @@
+﻿@{
+    var document = (string)ViewBag.Document;
+}
+
+<div id="myCarouselHtml" class="carousel slide custom-scroll" data-interval="false">
+    <div class="carousel-inner">
+        @Html.Raw(document)
+    </div>
+</div>

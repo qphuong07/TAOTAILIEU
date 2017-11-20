@@ -8,8 +8,8 @@
     var file = getNameFromPath($("#fileUpload").val());
     if (file != null) {
         var extension = file.substr((file.lastIndexOf('.') + 1));
-        if (extension !== 'xls' && extension !== 'xlsx') {
-            $("#spanfile").text("You can upload only excel file.");
+        if (extension !== 'doc' && extension !== 'docx') {
+            $("#spanfile").text("You can upload only word file.");
             $('#importLoader').hide();
             return false;
         }
