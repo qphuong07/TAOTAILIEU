@@ -4,6 +4,7 @@ using System.IO;
 using System.Web;
 using System.Web.Mvc;
 using Amaris.Aspose;
+using BLL;
 using DAL;
 
 namespace TAOTAILIEU.Controllers
@@ -25,19 +26,16 @@ namespace TAOTAILIEU.Controllers
             }
             var memoryStream = new MemoryStream();
             file.InputStream.CopyTo(memoryStream);
-            var document = new DocumentData()
-            {
-                Data = memoryStream.ToArray()
-            };
-            Db.DocumentDatas.Add(document);
-            Db.SaveChanges();
+            var templateBll = new Template();
+            var documentId = templateBll.SaveTemplate(memoryStream);
+            var fields = templateBll.GetTemplateFields(documentId);
             var urls = new List<string>();
             var factory = AmarisAsposeFactory.Get(memoryStream, DocumentType.Doc, 72);
             var count = factory.PageCount();
             for (int i = 0; i < count; i++)
             {
                 urls.Add(Url.Action("PreviewImage", "Admin",
-                    new { documentId = document.DocumentId, page = i, date = DateTime.Now.Ticks }));
+                    new { documentId = documentId, page = i, date = DateTime.Now.Ticks }));
             }
             return PartialView("PreviewTemplate", urls);
         }
