@@ -33,6 +33,9 @@
     <Reference Include="Amaris.Aspose">
       <HintPath>..\packages\Amaris.Aspose.Word.1.0.3.1\lib\net452\Amaris.Aspose.dll</HintPath>
     </Reference>
+    <Reference Include="Amaris.Aspose.License">
+      <HintPath>..\packages\Amaris.Aspose.License.1.0.2.21242\lib\net452\Amaris.Aspose.License.dll</HintPath>
+    </Reference>
     <Reference Include="Amaris.Aspose.Word">
       <HintPath>..\packages\Amaris.Aspose.Word.1.0.3.1\lib\net452\Amaris.Aspose.Word.dll</HintPath>
     </Reference>
