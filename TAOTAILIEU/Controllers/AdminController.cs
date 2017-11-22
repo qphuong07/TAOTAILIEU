@@ -29,15 +29,8 @@ namespace TAOTAILIEU.Controllers
             var templateBll = new Template();
             var documentId = templateBll.SaveTemplate(memoryStream);
             var fields = templateBll.GetTemplateFields(documentId);
-            var urls = new List<string>();
-            var factory = AmarisAsposeFactory.Get(memoryStream, DocumentType.Doc, 72);
-            var count = factory.PageCount();
-            for (int i = 0; i < count; i++)
-            {
-                urls.Add(Url.Action("PreviewImage", "Admin",
-                    new { documentId = documentId, page = i, date = DateTime.Now.Ticks }));
-            }
-            return PartialView("PreviewTemplate", urls);
+            
+            return PartialView("_ListInput", fields);
         }
         public ActionResult PreviewImage(int documentId, int page = 1)
         {
@@ -55,6 +48,19 @@ namespace TAOTAILIEU.Controllers
                 }
             }
             return null;
+        }
+
+        public void Preview()
+        {
+            //var urls = new List<string>();
+            //var factory = AmarisAsposeFactory.Get(memoryStream, DocumentType.Doc, 72);
+            //var count = factory.PageCount();
+            //for (int i = 0; i < count; i++)
+            //{
+            //    urls.Add(Url.Action("PreviewImage", "Admin",
+            //        new { documentId = documentId, page = i, date = DateTime.Now.Ticks }));
+            //}
+            //return PartialView("PreviewTemplate", urls);
         }
     }
 }

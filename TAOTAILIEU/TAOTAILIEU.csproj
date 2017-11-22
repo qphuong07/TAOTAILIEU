@@ -307,6 +307,7 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\PreviewTemplate.cshtml" />
     <Content Include="Views\Admin\PreviewDocument.cshtml" />
+    <Content Include="Views\Admin\_ListInput.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

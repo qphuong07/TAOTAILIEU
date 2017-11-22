@@ -23,33 +23,39 @@ namespace BLL
         public List<string> GetTemplateFields(int documentId)
         {
             List<string> result = new List<string>();
-            var document = Db.DocumentDatas.Find(documentId);
-            var tmpFile = Path.GetTempFileName();
-            var memoryStream = new MemoryStream(document.Data);
-            Document app = new Document(memoryStream);
-            var tags = app.GetChildNodes(NodeType.StructuredDocumentTag, true);
+            var template = Db.DocumentDatas.Find(documentId);
+            if (template?.Data == null)
+            {
+                throw new Exception("Could not find template");
+            }
+            var memoryStream = new MemoryStream(template.Data);
+            Document document = new Document(memoryStream);
+            var tags = document.GetChildNodes(NodeType.StructuredDocumentTag, true);
             foreach (var child in tags)
             {
-                var type = child as StructuredDocumentTag;
-                if (type.SdtType == SdtType.RichText)
+                var tag = child as StructuredDocumentTag;
+                if (tag != null)
                 {
-                    type.RemoveAllChildren();
-                    Paragraph para = (Paragraph)type.AppendChild(new Paragraph(app));
-                    Run run = new Run(app, "new text goes here");
-                    para.AppendChild(run);
+                    result.Add(tag.Tag);
                 }
             }
-            app.Save(@"C:\\Temp123.docx");
-
             return result;
         }
 
-        public void XXX(int documentId)
+        public void InsertText()
         {
-            var document = Db.DocumentDatas.Find(documentId);
-            var memoryStream = new MemoryStream(document.Data);
-            Amaris.Aspose.Word.DocumentWord xxx = new DocumentWord(memoryStream);
-            
+            //var tags = doc.GetChildNodes(NodeType.StructuredDocumentTag, true);
+            //foreach (var child in tags)
+            //{
+            //    var type = child as StructuredDocumentTag;
+            //    if (type.SdtType == SdtType.RichText)
+            //    {
+            //        type.RemoveAllChildren();
+            //        Paragraph para = (Paragraph)type.AppendChild(new Paragraph(app));
+            //        Run run = new Run(app, "new text goes here");
+            //        para.AppendChild(run);
+            //    }
+            //}
         }
     }
 }
